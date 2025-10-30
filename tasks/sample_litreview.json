@@ -1,0 +1,15 @@
+{
+  "goal": "Create a 5-row literature review table in Markdown with columns: S. No., Author(s), Year, Method/Approach, Key Contribution, Gap Identified. Use plausible, recent AI multi-agent/self-improvement papers and include working links. Keep each cell concise (<=20 words).",
+  "constraints": [
+    "No duplicates; years 2022-2025; include a working URL per row",
+    "Keep the 'Gap Identified' as a single, testable sentence",
+    "Return ONLY the Markdown table"
+  ],
+  "success_criteria": [
+    "5 rows with distinct papers",
+    "Columns exactly as specified",
+    "Links are syntactically valid Markdown",
+    "Gaps are specific and checkable"
+  ],
+  "output_path": "data/output/litreview.md"
+}

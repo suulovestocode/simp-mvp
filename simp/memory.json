@@ -1,0 +1,24 @@
+{
+  "rules": [
+    "Always dedupe by title or DOI before final output.",
+    "Ensure Markdown table columns match exactly the requested headers."
+  ],
+  "win_snippets": [
+    {
+      "name": "recent_output",
+      "text": "| S. No. | Author(s) | Year | Method/Approach | Key Contribution | Gap Identified |\n| --- | --- | --- | --- | --- | --- |\n| 1 | Hoare, C., & Wadler, P. | 1998 | Type theory for functional programming | Formalized type checking for lambda calculus | No explicit gap |\n| 2 | Silver, D., & Szolovits, D. | 2016 | Self-modifying neural networks | Training neural networks with self-improvement capabilities | Limited exploration in reinforcement learning |\n| 3 | Haarnoja, H., et al. | 2018 | Improving model interpretability for reinforcement learning | Demonstrated transparent AI decision-making using adversarial training | Understanding interpretability gaps remains an open problem |\n| 4 | Kurzweil, R. | 2005 | Predictive analytics and artificial general intelligence | Predictive modeling advancements in self-improvement AI | Limited applicability to human-AI collaboration |\n| 5 | Levine, S., et al. | 2016 | Learning from demonstrations for reinforcement learning | Introduced imitation learni"
+    },
+    {
+      "name": "recent_output",
+      "text": "| S. No. | Author(s) | Year | Method/Approach | Key Contribution | Gap Identified |\n| --- | --- | --- | --- | --- | --- |\n| 1 | Ammar Haider et al. | 2020 | Evolutionary Algorithms, Optimization | Optimized multi-agent reinforcement learning for robotics | Scaling to complex environments |\n| 2 | Tian He et al. | 2019 | Deep Reinforcement Learning, Multi-Agent Systems | Improved cooperation and coordination in multi-agent systems | Explaining human decision-making |\n| 3 | Jialong Li et al. | 2020 | Meta-Learning, Transfer Learning | Automated meta-learning for reinforcement learning | Adapting to unseen environments |\n| 4 | Yutaka Matsuda et al. | 2018 | Multi-Agent Systems, Game Theory | Analyzing and improving cooperation in multi-agent systems | Human-AI interaction analysis |\n| 5 | Zhiyuan Xu et al. | 2020 | Reinforcement Learning, Evolutionary Algorithms | Efficient reinforcement learning for complex tasks | Reduced computational costs |"
+    },
+    {
+      "name": "recent_output",
+      "text": "| S. No. | Author(s) | Year | Method/Approach | Key Contribution | Gap Identified |\n| --- | --- | --- | --- | --- | --- |\n| 1 | Sutton, R., & Barto, A. G. (2020) | [https://www.sciencedirect.com/book/9780262035627](https://www.sciencedirect.com/book/9780262035627) | Q-Learning, Reinforcement Learning | Introduced Q-learning algorithm for RL |  |\n| 2 | Levine, S., & Abbeel, P. (2019) | [https://arxiv.org/abs/1801.03186](https://arxiv.org/abs/1801.03186) | Meta-Learning, Few-Shot Learning | Developed meta-learning framework for few-shot learning |  |\n| 3 | Haarnoja, H., et al. (2018) | [https://arxiv.org/abs/1706.05471](https://arxiv.org/abs/1706.05471) | Imitation Learning, Deep Reinforcement Learning | Introduced Deep Deterministic Policy Gradients (DDPG) algorithm |  |\n| 4 | Fu, J., et al. (2020) | [https://www.nature.com/articles/s41599-020-03256-8](https://www.nature.com/articles/s41599-020-03256-8) | Transfer Learning, Few-Shot Learning | Developed a new method for few-shot learnin"
+    },
+    {
+      "name": "recent_output",
+      "text": "| S. No. | Author(s) | Year | Method/Approach | Key Contribution | Gap Identified |\n|:-------:| :--------:| :-: | :------------: | :-------------- | :------------:|\n| 1      | Haque, E., & Liu, Y. | 2022 | Evolutionary Algorithm | Improved Multi-agent Learning via Cooperative Problem Decomposition | Limited exploration in decentralized environments |\n| 2      | Wang, H., et al. | 2020 | Reinforcement Learning with Multi-Agent Imitation Learning | Robust imitation learning for complex tasks using adversarial training | Adversarial examples for robustness in multi-agent settings |\n| 3      | Zhang, J., & Liu, X. | 2019 | Deep Deterministic Policy Gradients | Scalable and efficient multi-agent reinforcement learning with deterministic policies | Limited scalability to large teams of agents |\n| 4      | Fu, W., et al. | 2020 | Self-Improving Multi-Agent Systems Using Meta-Learning | Self-improvement mechanism for meta-reinforcement learning in complex environments | Noisy or incomplete fee"
+    }
+  ]
+}
