@@ -1,62 +1,257 @@
-# SIMP (Self-Improving Multi-Agent Project) — Minimal MVP
+# 🧠 SIMP — Self-Improving Multi-Agent Planner
 
-A tiny, beginner-friendly starter to run a **Planner → Executor → Evaluator → Reflector** loop that
-**learns across cycles** using simple JSON memory. No fancy frameworks required.
+SIMP (Self-Improving Multi-Agent Planner) is an agentic AI system designed to autonomously plan, execute, evaluate, and improve task solutions using a multi-agent architecture.
 
-## What you'll need
-- Python 3.10+
-- VS Code (already installed by you)
-- An OpenAI API key
+Unlike traditional AI systems that produce a single-pass response, SIMP introduces an iterative reasoning loop where multiple specialized agents collaborate to generate better outputs over time.
 
-## 1) Setup (one-time)
-```bash
-# go to a folder where you keep projects
-cd /path/to/your/folder
+The system implements a Planner → Executor → Evaluator → Reflector workflow that allows the model to analyze its own outputs, generate feedback, and improve its reasoning in subsequent cycles. 
 
-# copy/download this project and then
-cd simp-mvp
+## 🚀 Motivation
 
-# (recommended) create a virtual environment
-python -m venv .venv
-# Windows:
-.venv\Scripts\activate
-# macOS/Linux:
-source .venv/bin/activate
+Traditional AI planning systems often suffer from:
 
-# install dependencies
-pip install -r requirements.txt
+•lack of transparency in decision-making
 
-# add your keys: copy .env.example -> .env and fill in OPENAI_API_KEY
-cp .env.example .env  # Windows: copy .env.example .env
-```
+•inability to adapt to new goals
 
-## 2) Run a sample task
-```bash
-python run.py --task tasks/sample_litreview.json --cycles 3
-```
-This will:
-- Ask the Planner to propose a plan
-- Let the Executor produce an output (a simple table draft)
-- Have the Evaluator score & critique it
-- Have the Reflector store lessons to memory
-- Repeat for N cycles, expecting improvements
+•limited capacity to learn from past mistakes
 
-Outputs land in `data/output/` and logs appear in the terminal.
+Most systems generate a single plan and execute it without feedback loops.
 
-## 3) Try your own task
-Duplicate `tasks/sample_litreview.json` and modify fields:
-- `goal`: plain-English objective
-- `constraints`: rules to follow
-- `success_criteria`: what “good” looks like
+SIMP addresses this limitation by introducing a modular multi-agent framework that iteratively improves decision quality through reflection and evaluation cycles. 
 
-## Notes
-- This MVP uses **one LLM** behind multiple roles (Planner/Executor/…) so you don't need multiple API keys.
-- Reflection writes to `simp/memory.json` — safe to delete if you want a clean slate.
+## 🧠 Core Concept
 
-## Troubleshooting
-- **Module not found**: ensure you activated the virtualenv before running `python run.py`.
-- **Auth error**: check `.env` has a valid `OPENAI_API_KEY`.
-- **Network**: you need internet to call the model.
-- To lower cost, switch to a cheaper model in `.env` (e.g., `gpt-4o-mini` to `gpt-4o-mini-translate` or other lightweight options you have).
+SIMP uses multiple AI agents that collaborate to solve a task.
 
-Happy building!
+Each agent performs a specialized role:
+
+Agent	Role
+Planner	Breaks user goals into structured steps
+Executor	Executes the planned tasks using LLM reasoning
+Evaluator	Scores the output and provides feedback
+Reflector	Uses feedback to improve the next cycle
+
+This architecture allows the system to self-correct and improve over time.
+
+🏗 System Architecture
+User Input
+    │
+    ▼
+Planner Agent
+(Task decomposition)
+    │
+    ▼
+Executor Agent
+(Task execution via LLM)
+    │
+    ▼
+Evaluator Agent
+(Score + feedback generation)
+    │
+    ▼
+Reflector Agent
+(Self-improvement rules)
+    │
+    ▼
+Next Iteration
+
+
+This loop repeats until the system reaches acceptable output quality.
+
+# ⚙️ Technology Stack
+
+### Core Technologies
+
+•Python
+
+•Large Language Models (LLMs)
+
+### Frameworks & Tools
+
+•LangGraph / Agent orchestration
+
+•Streamlit (frontend interface)
+
+•JSON memory storage
+
+•Python dataclasses
+
+### System Components
+
+•Agent modules
+
+•Orchestrator
+
+•Memory system
+
+•Evaluation engine
+
+# 🧩 Key Components
+
+1️⃣ Planner Agent
+
+The planner converts a high-level user goal into structured steps.
+
+Example:
+
+User Goal:
+"Create a literature review table."
+
+Planner Output:
+1. Identify relevant papers
+2. Extract key findings
+3. Summarize results
+4. Structure into Markdown table
+
+2️⃣ Executor Agent
+
+The executor performs the planned tasks using an LLM.
+
+Example implementation:
+
+class Executor:
+    def __init__(self, llm):
+        self.llm = llm
+
+    def execute(self, plan):
+        prompt = f"Execute the following plan:\n{plan}"
+        return self.llm.generate(prompt)
+        
+3️⃣ Evaluator Agent
+
+The evaluator analyzes the generated output and assigns:
+
+•numerical score (0–1)
+
+•natural language feedback
+
+It checks:
+
+•correctness
+
+•completeness
+
+•formatting
+
+•alignment with task goals. 
+
+
+4️⃣ Reflector Agent
+
+The reflector extracts lessons from the evaluator feedback and generates rules for the next cycle.
+
+Example:
+
+Feedback:
+Cells too long.
+
+Reflection Rule:
+Keep responses under 20 words per cell.
+
+These rules improve the system's reasoning in future iterations.
+
+# 🔁 Self-Improvement Loop
+Plan → Execute → Evaluate → Reflect → Improve
+
+Each cycle produces:
+
+•plan
+
+•output
+
+•feedback
+
+•performance score
+
+•reflection rules
+
+All results are stored in memory.json so the system can learn from past cycles. 
+
+# 📊 Evaluation Metrics
+
+System performance is measured using:
+
+Metric	Meaning
+Accuracy	Overall correctness of outputs
+Precision	Quality of predictions
+Recall	Ability to capture important cases
+F1 Score	Balance between precision and recall
+
+Because SIMP learns from feedback, these metrics improve across cycles, unlike traditional single-pass LLM systems. 
+
+# 💡 Applications
+
+SIMP can be applied to:
+
+•AI research assistants
+
+•autonomous decision systems
+
+•robotics planning
+
+•compliance auditing
+
+•customer support automation
+
+•knowledge management systems. 
+
+# 📂 Project Structure
+
+simp/
+
+│
+
+├── agents/
+
+│   ├── planner.py
+
+│   ├── executor.py
+
+│   ├── evaluator.py
+
+│   └── reflector.py
+
+│
+
+├── orchestrator/
+
+│   └── orchestrator.py
+
+│
+
+├── memory/
+
+│   └── memory.json
+
+│
+
+├── ui/
+
+│   └── app.py (Streamlit interface)
+
+│
+
+└── config/
+
+# 🔮 Future Improvements
+
+Potential enhancements include:
+
+•persistent long-term agent memory
+
+•reinforcement learning feedback
+
+•distributed multi-agent collaboration
+
+•tool-enabled reasoning (APIs, search)
+
+•autonomous research agents
+
+# 👩‍💻 Author
+
+Suhani Srivastava
+
+B.Tech CSE – Cyber Physical Systems
+
+VIT Chennai
